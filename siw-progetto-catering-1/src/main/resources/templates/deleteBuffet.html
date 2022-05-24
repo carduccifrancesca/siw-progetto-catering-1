@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Elimina Buffet</title>
+	</head>
+	<body>	
+		<div>
+			<h4>Sei sicuro di voler eliminare il buffet
+				<span th:text="${buffet.nome}">Buffet</span>
+				(<span th:text="${buffet.descrizione}">Descrizione</span>)?
+				<p><a th:href="@{'/confermaDeleteBuffet' + '/' + ${buffet.id}}">Conferma</a>
+				<a th:href="@{'/buffets'}">Annulla</a></p>
+			</h4>
+		</div>
+		<footer>
+			<a href="/">Home</a>
+		</footer>
+	</body>
+</html>

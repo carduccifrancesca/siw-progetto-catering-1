@@ -21,6 +21,7 @@
 			<li th:each="piatto: ${buffet.piatti}">
 				<a href="piatto.html" th:href="@{'/piatto' + '/' + ${piatto.id}}"
 				   th:text="${piatto.nome}">Piatto</a>
+				<a href="#" th:href="@{'/buffet' + '/' + ${buffet.id} + '/removePiatto' +'/' + ${piatto.id}}">Elimina</a>
 			</li>	   	
 		</ul>
   	</div>

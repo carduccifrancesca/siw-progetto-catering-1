@@ -67,8 +67,7 @@ public class PiattoController {
 		}
 	}
 
-	// METODI PER DELETE
-
+	//aggiunge l'ingrediente il cui id è passato nel path al piatto il cui id è passato nel path
 	@GetMapping("/piatto/{idPiatto}/{idIngrediente}")
 	public String addIngrediente(@PathVariable("idPiatto") Long idPiatto,
 			@PathVariable("idIngrediente") Long idIngrediente, Model model) {
@@ -79,20 +78,41 @@ public class PiattoController {
 		model.addAttribute("ingredientiAssenti", this.ingredienteService.findIngredientiNotInPiatto(piatto));
 		return "addIngredientiToPiatto.html";
 	}
+	
+	//inizia la creazione di un nuovo ingrediente da aggiungere al piatto il cui id è passato nel path
+	@GetMapping("/piatto/{id}/nuovoIngrediente")
+	public String creaIngrediente(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("piatto", this.piattoService.findById(id));
+		model.addAttribute("ingrediente", new Ingrediente());
+		return "ingredienteForm.html";
+	}
 
+	// METODI PER DELETE
+	
 	@GetMapping("/confermaDeletePiatto/{id}")
 	public String confermaDeletePiatto(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("piatto", this.piattoService.findById(id));
-		return "confermaDeletePiatto.html";
+		this.piattoService.deleteById(id);
+		model.addAttribute("piatti", this.piattoService.findAll());
+		return "piatti.html";
 	}
 
 	@GetMapping("/deletePiatto/{id}")
 	public String deletePiatto(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("piatto", this.piattoService.findById(id));
-		this.piattoService.deleteById(id);
-		return "piattoDelete.html";
+		return "deletePiatto.html";
 	}
-
+	
+	//elimina un ingrediente da un piatto
+	@GetMapping("/piatto/{idPiatto}/removeIngrediente/{idIngrediente}")
+	public String removeIngrediente(@PathVariable("idPiatto") Long idPiatto, 
+			@PathVariable("idIngrediente") Long idIngrediente, Model model) {
+		Piatto piatto = this.piattoService.findById(idPiatto);
+		Ingrediente ingrediente = this.ingredienteService.findById(idIngrediente);
+		this.piattoService.removeIngredienteFromPiatto(piatto, ingrediente);
+		model.addAttribute("piatto", piatto);
+		return "piatto.html";
+	}
+	
 	// METODI GET
 
 	// richiede un singolo chef tramite id

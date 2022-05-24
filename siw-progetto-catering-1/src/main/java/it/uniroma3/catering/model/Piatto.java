@@ -27,7 +27,7 @@ public class Piatto {
 	@NotBlank
 	private String descrizione;
 
-	@ManyToMany(fetch=FetchType.EAGER, cascade= {CascadeType.ALL})
+	@ManyToMany(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Ingrediente> ingredienti;
 	
 	//-----------------------------
@@ -54,6 +54,10 @@ public class Piatto {
 	
 	public void addIngrediente(Ingrediente ingrediente) {
 		this.ingredienti.add(ingrediente);
+	}
+	
+	public void removeIngrediente(Ingrediente ingrediente) {
+		this.ingredienti.remove(ingrediente);
 	}
 
 	public String getNome() {

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+ 
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>  
+	    <meta charset="ISO-8859-1" />
+	    <title>Operazioni Catering SRL</title>
+		<link rel="stylesheet" href="main.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head> 
+	 
+	
+	<body> 
+	<header> 
+		<div id="titolo"><strong class="titolo"> Inserimento nuovo buffet</strong></div>
+	</header>
+    
+    Seleziona uno tra i seguenti chef oppure creane uno nuovo:
+	<ul>
+		<li th:each="chef: ${chefs}">
+			<a href="chef.html" th:href="@{'/chef' + '/' + ${chef.id}}"
+			   th:text="${chef.nome} + ' ' + ${chef.cognome}">Paolo Rossi</a>
+			<a href="#" th:href="@{'/chef' + '/' + ${chef.id} + '/' + 'nuovoBuffet'}">Seleziona</a>
+		</li>	   	
+	</ul>
+	<a href="#" th:href="@{'/chefForm'}">Crea un nuovo chef</a>
+
+   <footer><a href="/">Home</a></footer>
+  
+</body>
+</html>

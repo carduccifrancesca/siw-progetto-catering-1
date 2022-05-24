@@ -66,19 +66,20 @@ public class ChefController {
 		}
 	}
 	
+	
 	// METODI PER DELETE
 	
 		@GetMapping("/confermaDeleteChef/{id}")
 		public String confermaDeleteChef(@PathVariable("id") Long id, Model model) {
-			model.addAttribute("chef", this.chefService.findById(id));
-			return "confermaDeleteChef.html";
+			this.chefService.deleteById(id);
+			model.addAttribute("chefs", this.chefService.findAll());
+			return "chefs.html";
 		}
 		
 		@GetMapping("/deleteChef/{id}")
 		public String deleteChef(@PathVariable("id") Long id, Model model) {
 			model.addAttribute("chef", this.chefService.findById(id));
-			this.chefService.deleteById(id);
-			return "chefDelete.html";
+			return "deleteChef.html";
 		}
 
 	// METODI GET
@@ -107,6 +108,7 @@ public class ChefController {
 		return "chefForm.html";
 	}
 	
+	//richiede tutti i buffet dello chef passato nel path
 	@GetMapping("/chef/{id}/buffets")
 	public String getBuffet(@Valid @PathVariable("id") Long id, Model model) {
 		Chef chef = chefService.findById(id);

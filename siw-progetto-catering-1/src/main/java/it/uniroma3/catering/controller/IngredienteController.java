@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.catering.model.Ingrediente;
+import it.uniroma3.catering.model.Piatto;
 import it.uniroma3.catering.service.IngredienteService;
+import it.uniroma3.catering.service.PiattoService;
 import it.uniroma3.catering.validator.IngredienteValidator;
 
 @Controller
@@ -25,6 +27,9 @@ public class IngredienteController {
 	
 	@Autowired
 	private IngredienteValidator ingredienteValidator;
+	
+	@Autowired
+	private PiattoService piattoService;
 	
 	/*
 	 * convenzione: get per le operazioni di lettura, post per gli aggiornamenti
@@ -60,20 +65,46 @@ public class IngredienteController {
 			return "ingredienteForm.html"; 
 		}
 	}
+	
+	//crea e aggiunge un nuovo ingrediente al piatto passato nel path
+	@PostMapping("/piatto/{idPiatto}/ingrediente")
+	public String addNewIngredienteToPiatto(@PathVariable("idPiatto") Long idPiatto, 
+			@Valid @ModelAttribute (value="ingrediente")Ingrediente ingrediente, 
+			BindingResult bindingResult, Model model) {
+		
+		Piatto piatto = this.piattoService.findById(idPiatto);
+		
+		this.ingredienteValidator.validate(ingrediente, bindingResult);
+		if (!bindingResult.hasErrors()) {
+			
+			this.ingredienteService.save(ingrediente); // salvo un oggetto Ingrediente
+			this.piattoService.addIngrediente(piatto, ingrediente);
+			model.addAttribute("piatto", piatto);
+			// Ogni metodo ritorna la stringa col nome della vista successiva
+			// se NON ci sono errori si va alla form di visualizzazione dati inseriti
+			return "addIngredientiToPiatto.html"; 
+		}
+		else {
+			model.addAttribute("ingrediente", ingrediente);
+			// se ci sono errori si rimanda alla form di inserimento
+			return "ingredienteForm.html"; 
+		}
+	}
 
 	// METODI PER DELETE
 	
 		@GetMapping("/confermaDeleteIngrediente/{id}")
 		public String confermaDeleteIngrediente(@PathVariable("id") Long id, Model model) {
-			model.addAttribute("ingrediente", this.ingredienteService.findById(id));
-			return "confermaDeleteIngrediente.html";
+			this.ingredienteService.deleteById(id);
+			model.addAttribute("ingredienti", this.ingredienteService.findAll());
+			return "ingredienti.html";
 		}
 		
 		@GetMapping("/deleteIngrediente/{id}")
 		public String deleteIngrediente(@PathVariable("id") Long id, Model model) {
-			model.addAttribute("ingrediente", this.ingredienteService.findById(id));
-			this.ingredienteService.deleteById(id);
-			return "ingredienteDelete.html";
+			Ingrediente ingrediente = this.ingredienteService.findById(id);
+			model.addAttribute("ingrediente", ingrediente);
+			return "deleteIngrediente.html";
 		}
 	
 	// METODI GET

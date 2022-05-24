@@ -4,7 +4,7 @@
 <head>  	
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="elenco.css"/>    
-	<title>Elenco</title>
+	<title>Elenco Ingredienti</title>
 </head> 
 
 <body>
@@ -12,8 +12,13 @@
 		<div id="titolo"><strong class="titolo"> Elenco ingredienti</strong></div>
 	</header>
 	
+	<ul>
+		<li th:each="ingrediente: ${ingredienti}">
+			<a href="ingrediente.html" th:href="@{'/ingrediente' + '/' + ${ingrediente.id}}"
+			   th:text="${ingrediente.nome}">Ingrediente</a>
+		</li>
+	</ul>
 	
-
     <footer><a href="/">Home</a></footer>
 
 </body>

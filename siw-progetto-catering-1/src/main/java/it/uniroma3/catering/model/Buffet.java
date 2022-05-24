@@ -31,7 +31,7 @@ public class Buffet {
 	@ManyToOne
 	private Chef chef;
 	
-	@ManyToMany(fetch=FetchType.EAGER, cascade= {CascadeType.ALL})
+	@ManyToMany(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Piatto> piatti;
 	
 	//-----------------------------------------
@@ -59,6 +59,11 @@ public class Buffet {
 	
 	public void addPiatto(Piatto piatto) {
 		this.piatti.add(piatto);
+	}
+	
+
+	public void removePiatto(Piatto piatto) {
+		this.piatti.remove(piatto);
 	}
 
 	public Long getId() {
@@ -97,6 +102,5 @@ public class Buffet {
 		Buffet that = (Buffet)obj;
 		return this.nome.equals(that.getNome());
 	}
-	
 	
 }

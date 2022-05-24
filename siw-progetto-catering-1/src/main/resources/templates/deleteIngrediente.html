@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Elimina Ingrediente</title>
+	</head>
+	<body>	
+		<div>
+			<h4>Sei sicuro di voler eliminare l'ingrediente
+				<span th:text="${ingrediente.nome}">Nome</span>
+				(<span th:text="${ingrediente.descrizione}">Descrizione</span>)?
+				<p><a th:href="@{'/confermaDeleteIngrediente' + '/' + ${ingrediente.id}}">Conferma</a>
+				<a th:href="@{'/ingredienti'}">Annulla</a></p>
+			</h4>
+		</div>
+		<footer>
+			<a href="/">Home</a>
+		</footer>
+	</body>
+</html>

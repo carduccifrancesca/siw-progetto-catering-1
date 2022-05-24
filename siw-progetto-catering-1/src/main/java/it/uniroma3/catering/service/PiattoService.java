@@ -66,4 +66,9 @@ public class PiattoService {
 		piatto.addIngrediente(ingrediente);
 		piattoRepository.save(piatto);
 	}
+
+	public void removeIngredienteFromPiatto(Piatto piatto, Ingrediente ingrediente) {
+		piatto.removeIngrediente(ingrediente);
+		piattoRepository.save(piatto);
+	}
 }

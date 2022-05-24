@@ -19,6 +19,9 @@ public class BuffetService {
 	@Autowired
 	private BuffetRepository buffetRepository;
 	
+	@Autowired
+	private ChefService chefService;
+	
 	@Transactional
 	public void save(Buffet buffet, Chef chef) { 
 		// Il save è di tipo transactional
@@ -36,6 +39,7 @@ public class BuffetService {
 	@Transactional
 	public void deleteById(Long id) {
 		buffetRepository.deleteById(id);
+		
 	}
 	
 	public Buffet findById (Long id) {
@@ -66,6 +70,11 @@ public class BuffetService {
 	@Transactional
 	public void addPiatto(Buffet buffet, Piatto piatto) {
 		buffet.addPiatto(piatto);
+		buffetRepository.save(buffet);
+	}
+
+	public void removePiattoFromBuffet(Buffet buffet, Piatto piatto) {
+		buffet.removePiatto(piatto);
 		buffetRepository.save(buffet);
 	}
 	

@@ -77,6 +77,8 @@ public class BuffetController {
 		}
 	}
 	
+	//aggiunge un piatto al buffet in fase di creazione di quest'ultimo
+	
 	@GetMapping("/buffet/{idBuffet}/{idPiatto}")
 	public String addPiatto(@PathVariable("idBuffet")Long idBuffet,
 			@PathVariable("idPiatto")Long idPiatto, Model model) {
@@ -92,15 +94,26 @@ public class BuffetController {
 	
 	@GetMapping("/confermaDeleteBuffet/{id}")
 	public String confermaDeleteBuffet(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("buffet", this.buffetService.findById(id));
-		return "confermaDeleteBuffet.html";
+		this.buffetService.deleteById(id);
+		model.addAttribute("buffets", this.buffetService.findAll());
+		return "buffets.html";
 	}
 	
 	@GetMapping("/deleteBuffet/{id}")
 	public String deleteBuffet(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("buffet", this.buffetService.findById(id));
-		this.buffetService.deleteById(id);
-		return "buffetDelete.html";
+		return "deleteBuffet.html";
+	}
+	
+	//elimina un piatto da un buffet
+	@GetMapping("/buffet/{idBuffet}/removePiatto/{idPiatto}")
+	public String removePiatto(@PathVariable("idBuffet") Long idBuffet,
+			@PathVariable("idPiatto") Long idPiatto, Model model) {
+		Buffet buffet = this.buffetService.findById(idBuffet);
+		Piatto piatto = this.piattoService.findById(idPiatto);
+		this.buffetService.removePiattoFromBuffet(buffet, piatto);
+		model.addAttribute("buffet", buffet);
+		return "buffet.html";
 	}
 	
 	// METODI GET
@@ -121,6 +134,8 @@ public class BuffetController {
 		return "buffets.html";
 	}
 	
+	
+	// crea un nuovo buffet associato allo chef passato nel path
 	@GetMapping("/chef/{idChef}/nuovoBuffet")
 	public String createBuffet(@PathVariable("idChef") Long idChef, Model model) {
 		Buffet buffet = new Buffet();
@@ -128,4 +143,13 @@ public class BuffetController {
 		model.addAttribute("buffet", buffet);
 		return "buffetForm.html";
 	}
+	
+	
+	//crea un nuovo buffet
+	@GetMapping("/newBuffet")
+	public String createBuffet(Model model) {
+		model.addAttribute("chefs", chefService.findAll());
+		return "newBuffet.html";
+	}
+	
 }

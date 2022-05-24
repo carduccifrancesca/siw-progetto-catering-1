@@ -4,17 +4,22 @@
 <head>  	
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="elenco.css"/>    
-	<title>Elenco</title>
+	<title>Elenco Piatti</title>
 </head> 
 
 <body>
 	<header> 
 		<div id="titolo"><strong class="titolo"> Elenco piatti</strong></div>
 	</header>
+	<ul>
+		<li th:each="piatto: ${piatti}">
+			<a href="piatto.html" th:href="@{'/piatto' + '/' + ${piatto.id}}"
+			   th:text="${piatto.nome}">Piatto</a>
+			<a href="#" th:href="@{'/deletePiatto' +'/' + ${piatto.id}}">Elimina</a> 
+		</li>	   	
+	</ul>
 	
-	
-
-  <footer><a href="/">Home</a></footer>
+	<footer><a href="/">Home</a></footer>
 
 </body>
 
