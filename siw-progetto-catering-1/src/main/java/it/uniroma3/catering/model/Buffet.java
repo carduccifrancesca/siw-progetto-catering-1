@@ -47,7 +47,6 @@ public class Buffet {
 	public void setChef(Chef chef) {
 		this.chef = chef;
 	}
-
 	
 	public List<Piatto> getPiatti() {
 		return piatti;

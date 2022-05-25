@@ -18,7 +18,7 @@
 		<p><a th:text="${buffet.chef}" th:href="@{'/chef' + '/' + ${buffet.chef.id}}">Chef</a></p>
 		<p>Piatti presenti nel buffet:</p>
 		<ul>
-			<li th:each="piatto: ${buffet.piatti}">
+			<li th:each="piatto: ${piatti}">
 				<a href="piatto.html" th:href="@{'/piatto' + '/' + ${piatto.id}}"
 				   th:text="${piatto.nome}">Piatto</a>
 				<a href="#" th:href="@{'/buffet' + '/' + ${buffet.id} + '/removePiatto' +'/' + ${piatto.id}}">Elimina</a>

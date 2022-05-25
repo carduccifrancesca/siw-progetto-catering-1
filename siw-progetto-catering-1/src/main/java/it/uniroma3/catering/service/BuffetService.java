@@ -73,6 +73,7 @@ public class BuffetService {
 		buffetRepository.save(buffet);
 	}
 
+	@Transactional
 	public void removePiattoFromBuffet(Buffet buffet, Piatto piatto) {
 		buffet.removePiatto(piatto);
 		buffetRepository.save(buffet);

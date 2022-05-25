@@ -34,6 +34,7 @@ public class PiattoService {
 	@Transactional
 	public void deleteById(Long id) {
 		piattoRepository.deleteById(id);
+		
 	}
 	
 	public Piatto findById (Long id) {
@@ -60,6 +61,13 @@ public class PiattoService {
 		}
 		return piatti;
 	}
+	
+	public List<Piatto> findPiattiInBuffet(Buffet buffet) {
+		List<Piatto> piatti = this.findAll();
+		for(Piatto p : this.findPiattiNotInBuffet(buffet))
+			piatti.remove(p);
+		return piatti;
+	}
 
 	@Transactional
 	public void addIngrediente(Piatto piatto, Ingrediente ingrediente) {
@@ -67,6 +75,7 @@ public class PiattoService {
 		piattoRepository.save(piatto);
 	}
 
+	@Transactional
 	public void removeIngredienteFromPiatto(Piatto piatto, Ingrediente ingrediente) {
 		piatto.removeIngrediente(ingrediente);
 		piattoRepository.save(piatto);

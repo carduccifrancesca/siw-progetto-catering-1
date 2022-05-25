@@ -113,6 +113,15 @@ public class PiattoController {
 		return "piatto.html";
 	}
 	
+	// METODI PER UPDATE
+	@GetMapping("/updatePiatto/{id}")
+	public String updatePiatto(@PathVariable("id") Long id, Model model) {
+		Piatto piatto = this.piattoService.findById(id);
+		model.addAttribute("piatto", piatto);
+		model.addAttribute("ingredientiAssenti", this.ingredienteService.findIngredientiNotInPiatto(piatto));
+		return "addIngredientiToPiatto.html";
+	}
+	
 	// METODI GET
 
 	// richiede un singolo chef tramite id
