@@ -4,7 +4,7 @@
 <head>  	
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">    
 	<title>Aggiungi piatti</title>
-		<link rel="stylesheet" href="../elenchi.css"/>  
+		<link rel="stylesheet" href="/../elenchi.css"/>  
 </head> 
 
 <body>
@@ -12,10 +12,17 @@
 		<div id="titolo"><strong class="titolo"> Dettagli buffet</strong></div>
 	</header>
 	
-	<div>
-		<div>Nome: <span th:text="${buffet.nome}">Buffet generico</span></div>
-		<div>Descrizione: <span th:text="${buffet.descrizione}">Descrizione generica</span></div>
-		<div>Chef: <span th:text="${buffet.chef}">Id chef generico</span></div>
+	<div class="sezione">
+	
+		<p>
+			<span >Nome buffet: </span>
+			<span th:text="${buffet.nome}">Buffet generico</span>
+			<span>  -  Descrizione buffet: </span>
+			<span  th:text="${buffet.descrizione}">Descrizione generica</span>
+			<span>  -  Chef buffet: </span>
+			<span th:text="${buffet.chef}">Id chef generico</span>
+		</p>
+		
 		<div th:if="${!buffet.piatti.empty}">Piatti presenti nel buffet:
 			<ul>
 				<li th:each="piatto: ${buffet.piatti}">
@@ -24,7 +31,9 @@
 				</li>	   	
 			</ul>
 		</div>
+		
 		<div th:if="${!piattiAssenti.empty}">Vuoi aggiungere uno dei seguenti piatti al buffet?</div>
+		
 		<ul>
 			<li th:each="piatto: ${piattiAssenti}">
 				<a href="piatto.html" th:href="@{'/piatto' + '/' + ${piatto.id}}"

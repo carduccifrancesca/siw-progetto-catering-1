@@ -5,13 +5,12 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -31,7 +30,7 @@ public class Buffet {
 	@ManyToOne
 	private Chef chef;
 	
-	@ManyToMany(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToMany(mappedBy="buffet", cascade = CascadeType.ALL)
 	private List<Piatto> piatti;
 	
 	//-----------------------------------------
