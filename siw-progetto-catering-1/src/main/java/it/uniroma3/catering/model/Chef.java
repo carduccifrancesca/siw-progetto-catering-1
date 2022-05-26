@@ -50,7 +50,7 @@ public class Chef {
 	}
 	
 	public void addBuffet(Buffet buffet) {
-		this.buffet.add(buffet);
+		this.getBuffet().add(buffet);
 	}
 
 	public Long getId() {

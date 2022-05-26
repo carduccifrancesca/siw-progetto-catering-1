@@ -53,11 +53,11 @@ public class Piatto {
 	}
 	
 	public void addIngrediente(Ingrediente ingrediente) {
-		this.ingredienti.add(ingrediente);
+		this.getIngredienti().add(ingrediente);
 	}
 	
 	public void removeIngrediente(Ingrediente ingrediente) {
-		this.ingredienti.remove(ingrediente);
+		this.getIngredienti().remove(ingrediente);
 	}
 
 	public String getNome() {

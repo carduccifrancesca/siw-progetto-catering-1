@@ -57,12 +57,12 @@ public class Buffet {
 	}
 	
 	public void addPiatto(Piatto piatto) {
-		this.piatti.add(piatto);
+		this.getPiatti().add(piatto);
 	}
 	
 
 	public void removePiatto(Piatto piatto) {
-		this.piatti.remove(piatto);
+		this.getPiatti().remove(piatto);
 	}
 
 	public Long getId() {

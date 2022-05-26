@@ -22,7 +22,7 @@
 		<p>
 			<a th:text="${buffet.chef}" th:href="@{'/chef' + '/' + ${buffet.chef.id}}">Chef</a>
 		</p>
-Â Â  	</div>
+     	</div>
 
 	<div class="sezione">	
 		<p>Piatti presenti nel buffet:</p>
@@ -33,7 +33,7 @@
 						<a href="piatto.html" th:href="@{'/piatto' + '/' + ${piatto.id}}"
 						   th:text="${piatto.nome}">Piatto</a>
 					</span>
-					<span
+					<span>
 						<a href="#" th:href="@{'/buffet' + '/' + ${buffet.id} + 
 							'/removePiatto' +'/' + ${piatto.id}}">CANCELLA</a>
 					</span>
