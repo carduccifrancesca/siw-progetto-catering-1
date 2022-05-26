@@ -19,11 +19,18 @@
 				<span>  -  Descrizione piatto: </span>
 				<span  th:text="${piatto.descrizione}">Descrizione generica</span>
 		</div>
+<<<<<<< HEAD
 		
 		<div class="sezione">
 			<p th:if="${!piatto.ingredienti.empty}">Ingredienti presenti nel piatto:
 				<ul>
 					<li th:each="ingrediente: ${piatto.ingredienti}">
+=======
+		<div >Aggiungi gli ingredienti al piatto: puoi selezionarli tra quelli gia' presenti o crearne di nuovi </div>
+			<ul>
+				<li th:each="ingrediente: ${ingredientiAssenti}">
+					<p class="desc">
+>>>>>>> 9a489f066c8070bf423e80565639a2aa90a7997b
 						<a href="ingrediente.html" th:href="@{'/ingrediente' + '/' + ${ingrediente.id}}"
 						   th:text="${ingrediente.nome}">Ingrediente</a>
 					</li>	   	
