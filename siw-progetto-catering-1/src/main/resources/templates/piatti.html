@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>  	
-	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="elenco.css"/>    
-	<title>Elenco Piatti</title>
-</head> 
-
-<body>
-	<header> 
-		<div id="titolo"><strong class="titolo"> Elenco piatti</strong></div>
-	</header>
-	<ul>
-		<li th:each="piatto: ${piatti}">
-			<a href="piatto.html" th:href="@{'/piatto' + '/' + ${piatto.id}}"
-			   th:text="${piatto.nome}">Piatto</a>
-		    <a href="#" th:href="@{'/updatePiatto' +'/' + ${piatto.id}}">Modifica</a> 
-			<a href="#" th:href="@{'/deletePiatto' +'/' + ${piatto.id}}">Elimina</a> 
-		</li>	   	
-	</ul>
+	<head>  	
+		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+		<title>Elenco Piatti</title>
+		<link rel="stylesheet" href="../elenchi.css"/>  
+	</head> 
 	
-	<footer><a href="/">Home</a></footer>
+	<body>
+	<header> 
+		<div id="titolo"><strong class="titolo">ELENCO DEI PIATTI A SISTEMA</strong></div>
+	</header>
+	
+	<div class="sezione">
 
-</body>
+		<ul>
+			<li th:each="piatto: ${piatti}">
+				<p class="desc">
+					<span>
+						<a href="piatto.html" th:href="@{'/piatto' + '/' + ${piatto.id}}"
+						   th:text="${piatto.nome}">Piatto</a>
+					</span>
+					<span>
+					    <a href="#" th:href="@{'/updatePiatto' +'/' + ${piatto.id}}">MODIFICA</a> 
+					</span>
+					<span
+						<a href="#" th:href="@{'/deletePiatto' +'/' + ${piatto.id}}">ELIMINA</a> 
+					</span>
+				</p>
+			</li>	   	
+		</ul>
+	</div>
+	
+	<div class="sezione">
+			<a href="/"><strong class="top">Home</strong></a>
+	</div>
+	</body>
 
 </html>

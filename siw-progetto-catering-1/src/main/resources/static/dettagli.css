@@ -1,7 +1,7 @@
 @charset "ISO-8859-1";
 body {
 	margin: 10px;
-	background-color: rgb(192, 192, 192);
+	background-color: white;
 	font-family: sans-serif;
 	color:  green;
 }
@@ -22,28 +22,26 @@ strong.titolo {
 	margin: 10px;
 }
 
-.itemMain {
+.desc {
 	background-color: lightblue;
 	font-size: medium;
 	border: 3px solid darkgreen;
 	border-radius: 10px;
 	margin: 20px;
 	padding: 10px;
-	text-align: center;
 }
 
-.fotografia {
+div.sezione {
+	font-size:medium;
+	text-align: justify;
+	background-color: whitesmoke;
+	border: 3px solid darkgreen;
+	border-radius: 10px;
 	margin: 10px;
 	padding: 10px;
-	text-align: center;
-}
-
-strong.item {
-	font-size: 20px;
-	color: darkblue;
 }
 
 strong.top {
-	font-size: 10px;
+	font-size: 15px;
 	color: darkblue;
 }

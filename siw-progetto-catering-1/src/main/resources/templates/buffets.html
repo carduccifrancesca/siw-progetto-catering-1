@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>  	
-	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="elenco.css"/>    
-	<title>Elenco</title>
-</head> 
-
-<body>
+	<head>  	
+		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+		<title>Elenco buffet</title>
+		<link rel="stylesheet" href="../elenchi.css"/>  
+	</head> 
+	
+	<body>
 	<header> 
-		<div id="titolo"><strong class="titolo"> Elenco buffet</strong></div>
+		<div id="titolo"><strong class="titolo">ELENCO DEI BUFFET A SISTEMA</strong></div>
 	</header>
-	<ul>
-		<li th:each="buffet: ${buffets}">
-			<a href="buffet.html" th:href="@{'/buffet' + '/' + ${buffet.id}}"
-			   th:text="${buffet.nome}">Buffet</a>
-			<a href="#" th:href="@{'/updateBuffet' +'/' + ${buffet.id}}">Modifica</a> 
-			<a href="#" th:href="@{'/deleteBuffet' +'/' + ${buffet.id}}">Elimina</a> 
-		</li>
-	</ul>
 	
+	<div class="sezione">	
+		<ul>
+			<li th:each="buffet: ${buffets}">
+				<p class="desc">
+					<span>
+						<a href="buffet.html" th:href="@{'/buffet' + '/' + ${buffet.id}}"
+						   th:text="${buffet.nome}">Buffet</a>
+					</span>
+					<span>
+						<a href="#" th:href="@{'/updateBuffet' +'/' + ${buffet.id}}"><strong>MODIFICA</strong></a> 
+					</span>
+					<span>
+						<a href="#" th:href="@{'/deleteBuffet' +'/' + ${buffet.id}}"><strong>ELIMINA</strong></a> 
+					</span>
+				</p>
+			</li>
+		</ul>
+	</div>
 	
-
-    <footer><a href="/">Home</a></footer>
-
-</body>
+	<div class="sezione">
+		<a href="/"><strong class="top">Home</strong></a>
+	</div>
+	</body>
 
 </html>

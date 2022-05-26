@@ -21,3 +21,18 @@ strong.titolo {
 	font-size: x-large;
 	margin: 10px;
 }
+
+div.sezione {
+	background-color: whitesmoke;
+	border: 3px solid forestgreen;
+	border-radius: 10px;
+	margin: 10px;
+	font-size: large;
+	text-align: justify;
+	padding: 15px;
+}
+
+strong.top {
+	font-size: 15px;
+	color: darkblue;
+}

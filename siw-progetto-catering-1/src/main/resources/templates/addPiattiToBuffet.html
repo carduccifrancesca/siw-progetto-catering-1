@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>  	
-	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="elenco.css"/>    
+	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">    
 	<title>Aggiungi piatti</title>
+		<link rel="stylesheet" href="../elenchi.css"/>  
 </head> 
 
 <body>
@@ -33,12 +33,15 @@
 			</li>	   	
 		</ul>
 	</div>
-	<div>
-		<a href="buffet.html" th:href="@{'/buffet' + '/' + ${buffet.id}}">Conferma</a>
+	
+	<div class="sezione">
+		<a href="buffet.html" th:href="@{'/buffet' + '/' + ${buffet.id}}">CONFERMA</a>
 	</div>
-
-    <footer><a href="/">Home</a></footer>
-
+	
+	<div class="sezione">
+		<a href="/"><strong class="top">Home</strong></a>
+	</div>
+	</body>
 </body>
 
 </html>
