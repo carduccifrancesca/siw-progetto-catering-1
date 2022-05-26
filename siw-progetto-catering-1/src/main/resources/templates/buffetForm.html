@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 		<title>Inserimento buffet</title>
-		<link rel="stylesheet" href="form.css"/>	
+		<link rel="stylesheet" href="../../form.css"/>	
 	</head>
 
 	<body>
@@ -17,7 +17,8 @@
 		<form th:action="@{'/chef' + '/' + ${chef.id} + '/' + 'buffet'}" method="POST" th:object="${buffet}">
 	
 			<div th:if="${#fields.hasGlobalErrors()}">
-	    		<p 	th:each="err : ${#fields.globalErrors()}" th:text="${err}">ERRORE GENERICO</p> 
+	    		<p 	th:each="err : ${#fields.globalErrors()}" 
+	  				th:text="${err}">ERRORE GENERICO</p> 
 	  		</div>
 	
 			<div>

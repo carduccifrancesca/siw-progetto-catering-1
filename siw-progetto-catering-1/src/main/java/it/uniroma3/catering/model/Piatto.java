@@ -8,8 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -28,7 +28,7 @@ public class Piatto {
 	@ManyToOne	
 	private Buffet buffet;
 
-	@OneToMany(mappedBy="piatto", cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy="piatti", cascade = CascadeType.ALL)
 	private List<Ingrediente> ingredienti;
 	
 	//-----------------------------
@@ -37,6 +37,14 @@ public class Piatto {
 		this.ingredienti = new ArrayList<Ingrediente>();
 	}
 	
+	public Buffet getBuffet() {
+		return buffet;
+	}
+
+	public void setBuffet(Buffet buffet) {
+		this.buffet = buffet;
+	}
+
 	public Long getId() {
 		return id;
 	}

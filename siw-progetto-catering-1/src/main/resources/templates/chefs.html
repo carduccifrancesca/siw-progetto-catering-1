@@ -13,19 +13,21 @@
 	</header>
 	
 	<div class="sezione">	
-		<ul>
-			<li th:each="chef: ${chefs}">
-				<p class="desc">
-					<span>
-						<a href="chef.html" th:href="@{'/chef' + '/' + ${chef.id}}"
-				   		th:text="${chef.nome} + ' ' + ${chef.cognome}">Paolo Rossi</a>
-				   	</span>
-					<span>
-						<a href="#" th:href="@{'/deleteChef' +'/' + ${chef.id}}">ELIMINA</a> 
-					</span>
-				</p>
-			</li>	   	
-		</ul>
+		<p>
+			<ul>
+				<li th:each="chef: ${chefs}">
+					<p class="desc">
+						<span>
+							<a href="chef.html" th:href="@{'/chef' + '/' + ${chef.id}}"
+					   		th:text="${chef.nome} + ' ' + ${chef.cognome}">Paolo Rossi</a>
+					   	</span>
+						<span>
+							<a href="#" th:href="@{'/deleteChef' +'/' + ${chef.id}}">ELIMINA</a> 
+						</span>
+					</p>
+				</li>	   	
+			</ul>
+		</p>
 	</div>
 	
 	<div class="sezione">

@@ -1,10 +1,13 @@
 package it.uniroma3.catering.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -23,11 +26,23 @@ public class Ingrediente {
 	@NotBlank
 	private String descrizione;
 	
-	@ManyToOne		
-	private Piatto piatto;
+	@ManyToMany		
+	private List<Piatto> piatti;
 	
 	//--------------------------------
 	
+	public Ingrediente() {
+		this.piatti = new ArrayList<Piatto>();
+	}
+	
+	public List<Piatto> getPiatti() {
+		return piatti;
+	}
+
+	public void setPiatti(List<Piatto> piatti) {
+		this.piatti = piatti;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}

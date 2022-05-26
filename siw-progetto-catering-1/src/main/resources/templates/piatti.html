@@ -13,23 +13,24 @@
 	</header>
 	
 	<div class="sezione">
-
-		<ul>
-			<li th:each="piatto: ${piatti}">
-				<p class="desc">
-					<span>
-						<a href="piatto.html" th:href="@{'/piatto' + '/' + ${piatto.id}}"
-						   th:text="${piatto.nome}">Piatto</a>
-					</span>
-					<span>
-					    <a href="#" th:href="@{'/updatePiatto' +'/' + ${piatto.id}}">MODIFICA</a> 
-					</span>
-					<span
-						<a href="#" th:href="@{'/deletePiatto' +'/' + ${piatto.id}}">ELIMINA</a> 
-					</span>
-				</p>
-			</li>	   	
-		</ul>
+		<p>
+			<ul>
+				<li th:each="piatto: ${piatti}">
+					<p class="desc">
+						<span>
+							<a href="piatto.html" th:href="@{'/piatto' + '/' + ${piatto.id}}"
+							   th:text="${piatto.nome}">Piatto</a>
+						</span>
+						<span>
+						    <a href="#" th:href="@{'/updatePiatto' +'/' + ${piatto.id}}">MODIFICA</a> 
+						</span>
+						<span
+							<a href="#" th:href="@{'/deletePiatto' +'/' + ${piatto.id}}">ELIMINA</a> 
+						</span>
+					</p>
+				</li>	   	
+			</ul>
+		</p>
 	</div>
 	
 	<div class="sezione">

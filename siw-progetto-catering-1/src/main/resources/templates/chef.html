@@ -14,11 +14,11 @@
 	
 	<div class="sezione">
 		<p>
-			<span >Nome chef: </span>
+			<span ><strong>Nome chef: </strong></span>
 			<span th:text="${chef.nome}">Nome generico</span>
-			<span>  -  Cognome chef: </span>
+			<span><strong>  -  Cognome chef: </strong></span>
 			<span  th:text="${chef.cognome}">Cognome generico</span>
-			<span>  -  Nazionalità chef: </span>
+			<span><strong>  -  Nazionalità chef: </strong></span>
 			<span  th:text="${chef.nazionalita}">Nazionalita generica</span>
 		</p>
 		<p><a th:href="@{'/chef' + '/' + ${chef.id} + '/' + 

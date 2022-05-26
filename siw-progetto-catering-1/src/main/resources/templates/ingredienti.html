@@ -13,16 +13,18 @@
 	</header>
 	
 	<div class="sezione">
-		<ul>
-			<li th:each="ingrediente: ${ingredienti}">
-				<p class="desc">
-					<span>
-						<a href="ingrediente.html" th:href="@{'/ingrediente' + '/' + ${ingrediente.id}}"
-				   		th:text="${ingrediente.nome}">Ingrediente</a>
-					</span>
-				</p>
-			</li>
-		</ul>
+		<p>
+			<ul>
+				<li th:each="ingrediente: ${ingredienti}">
+					<p class="desc">
+						<span>
+							<a href="ingrediente.html" th:href="@{'/ingrediente' + '/' + ${ingrediente.id}}"
+					   		th:text="${ingrediente.nome}">Ingrediente</a>
+						</span>
+					</p>
+				</li>
+			</ul>
+		</p>
 	</div>
 	
 	<div class="sezione">
