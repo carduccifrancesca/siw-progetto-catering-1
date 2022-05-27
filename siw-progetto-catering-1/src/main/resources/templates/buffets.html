@@ -22,10 +22,10 @@
 							   th:text="${buffet.nome}">Buffet</a>
 						</span>
 						<span>
-							<a href="#" th:href="@{'/updateBuffet' +'/' + ${buffet.id}}"><strong>MODIFICA</strong></a> 
+							<a href="#" th:href="@{'/updateBuffet' + '/' + ${buffet.id}}"><strong>MODIFICA</strong></a> 
 						</span>
 						<span>
-							<a href="#" th:href="@{'/deleteBuffet' +'/' + ${buffet.id}}"><strong>ELIMINA</strong></a> 
+							<a href="#" th:href="@{'/deleteBuffet' + '/' + ${buffet.id}}"><strong>ELIMINA</strong></a> 
 						</span>
 					</p>
 				</li>

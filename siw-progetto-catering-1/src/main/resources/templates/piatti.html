@@ -22,10 +22,10 @@
 							   th:text="${piatto.nome}">Piatto</a>
 						</span>
 						<span>
-						    <a href="#" th:href="@{'/updatePiatto' +'/' + ${piatto.id}}">MODIFICA</a> 
+						    <a href="#" th:href="@{'/updatePiatto' + '/' + ${piatto.id}}"><strong>MODIFICA</strong></a> 
 						</span>
-						<span
-							<a href="#" th:href="@{'/deletePiatto' +'/' + ${piatto.id}}">ELIMINA</a> 
+						<span>
+							<a href="#" th:href="@{'/deletePiatto' + '/' + ${piatto.id}}"><strong>ELIMINA</strong></a> 
 						</span>
 					</p>
 				</li>	   	
@@ -34,7 +34,7 @@
 	</div>
 	
 	<div class="sezione">
-			<a href="/"><strong class="top">Home</strong></a>
+		<a href="/"><strong class="top">Home</strong></a>
 	</div>
 	</body>
 
